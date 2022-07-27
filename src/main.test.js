@@ -1,6 +1,7 @@
 import { newShip } from "./ship";
 import { gameBoard } from "./gameboard";
 import { findShip } from "./gameboard";
+import { player, aiPlayer } from "./players";
 test("find ship", () => {
   const coor = [
     [
@@ -47,5 +48,18 @@ describe("gameBoard", () => {
   test("registers hit on water", () => {
     board1.receiveAttack(0, 5);
     expect(board1.board[0][5]).toEqual(2);
+  });
+  test("checks whether all ships are hit", () => {
+    expect(board1.shipsSunk()).not.toBeTruthy();
+  });
+});
+describe("player", () => {
+  const player1 = player();
+  player1.hitShip(1, 1);
+  test("can hit", () => {
+    expect(player1.hitShip(2, 1)).toBeUndefined;
+  });
+  test("can't hit again", () => {
+    expect(player1.hitShip(1, 1)).toMatch("repeat");
   });
 });
