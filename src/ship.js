@@ -9,10 +9,8 @@ export const newShip = function (name, length) {
     body[hitArea] = 1;
   };
   const sunk = function () {
-    const totalHits = body.reduce((x, y) => {
-      x + y;
-    });
-    if (totalHits === length) return true;
+    const totalHits = body.reduce((x, y) => x + y, 0);
+    if (totalHits === body.length) return true;
     else return false;
   };
 
