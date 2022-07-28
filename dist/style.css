@@ -1,0 +1,36 @@
+body,
+html {
+  background-color: darkgray;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+.container {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 2fr 6fr 1fr;
+}
+.mainArea {
+  margin: 0px 2.5%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.gameBoard {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+.gridBox {
+  background-color: antiquewhite;
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+}
+.playerShips {
+  width: 300px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
