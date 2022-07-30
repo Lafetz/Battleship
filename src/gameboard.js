@@ -2,17 +2,16 @@
 //1 taken by a ship
 //2 area that is hit
 //3 hit ship
-//ships 5 types 5 4 3 2 1
+//ships 5 types 5 4 3 3 2
 import { newShip } from "./ship";
-export const gameBoard = function () {
+export const gameBoard = function (ships) {
   const board = new Array(10).fill(0).map((x) => new Array(10).fill(0));
-  const ships = new Array(5).fill(0).map((ship, i) => newShip(i + 1));
+  const ships = [...ships];
   const shipCoordinates = new Array(5).fill(new Array());
   const placeShips = function () {
     ships.forEach((ship, i) => {
       for (let j = 0; j < ship.body.length; j++) {
         board[i][j] = 1;
-
         shipCoordinates[i].push([i, j]);
       }
     });

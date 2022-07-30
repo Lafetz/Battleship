@@ -22,3 +22,13 @@ export const aiPlayer = function () {
     yAxis,
   };
 };
+[(1)[(2)[(1, 2)]]];
+const placeTaken = function (placedShips, place) {
+  let taken = false;
+  placedShips.forEach((ship) => {
+    ship.forEach((x) => {
+      if (x[0] + x[1] == 2) {
+      }
+    });
+  });
+};

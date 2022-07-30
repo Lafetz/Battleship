@@ -1,4 +1,5 @@
-export const newShip = function (length) {
+export const newShip = function (length, coordinate) {
+  const coordinate = coordinate; //an array
   const body = new Array(length).fill(0);
   const hit = function (hitArea) {
     body[hitArea] = 1;
@@ -13,5 +14,6 @@ export const newShip = function (length) {
     hit,
     sunk,
     body,
+    coordinate,
   };
 };
