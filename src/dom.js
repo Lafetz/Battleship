@@ -24,7 +24,15 @@ const placeTaken = function (placedShips, coors) {
   });
   return taken;
 };
-
+const dontPaint = function (placedShips, coor) {
+  let taken = false;
+  placedShips.forEach((ship) => {
+    ship.forEach((x) => {
+      if (x.join("" == coor)) taken = true;
+    });
+  });
+  return taken;
+};
 // ship.forEach((x) => {
 //   if (x[0] + x[1] == ) {
 //   }
@@ -58,7 +66,10 @@ export const selectShips = function (shiptype, placedShips) {
   boxes.forEach((box) => {
     box.addEventListener("mouseleave", () => {
       boxes.forEach((x) => {
+        // const taken = dontPaint(placedShips, x.getAttribute("data-coor"));
+        // console.log(taken);
         x.style.background = "antiquewhite";
+        displaySelectedAreas(placedShips);
       });
     });
   });
