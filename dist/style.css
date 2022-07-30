@@ -29,10 +29,11 @@ html {
   height: 50px;
 }
 .playerShips {
-  width: 300px;
-
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+.ships {
+  display: flex;
 }
 .draggableShip {
   height: fit-content;

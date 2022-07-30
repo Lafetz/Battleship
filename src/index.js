@@ -1,9 +1,23 @@
-import { createBoard, selectShips, shipPlacement } from "./dom";
-createBoard("player");
-selectShips(5);
+import { createBoard, selectShips } from "./dom";
 
-//5 4 3 3 2
-// const playerShipsPlacement = (function () {
-//   const playerShips = [];
-
-// })();
+const userShipSelction = (function () {
+  createBoard("player");
+  let totalShipsPlaced = 0;
+  const playerShips = [];
+  const shipsToSelect = document.querySelectorAll(".ships");
+  shipsToSelect.forEach((ship) => {
+    ship.addEventListener("click", () => {
+      const gameBoard = document.querySelector(`#player`);
+      gameBoard.addEventListener(
+        "click",
+        () => {
+          totalShipsPlaced += 1;
+          console.log(totalShipsPlaced);
+        },
+        { once: true }
+      );
+      const shipSize = ship.getAttribute("data-ships");
+      selectShips(shipSize, playerShips);
+    });
+  });
+})();

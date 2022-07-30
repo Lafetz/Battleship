@@ -1,3 +1,4 @@
+import { removeSelection, displaySelectedAreas } from "./selectDom";
 export const createBoard = function (boardName) {
   const gameBoard = document.querySelector(`#${boardName}`);
   for (let i = 0; i < 10; i++) {
@@ -16,9 +17,8 @@ const placeTaken = function (placedShips, coors) {
   let taken = false;
   placedShips.forEach((ship) => {
     coors.forEach((coor) => {
-      const toPlace = coors[0] + coors[1];
       ship.forEach((x) => {
-        if (x[0] + x[1] == toPlace) return true;
+        if (x.join("") == coor.join("")) taken = true;
       });
     });
   });
@@ -31,24 +31,26 @@ const placeTaken = function (placedShips, coors) {
 
 //
 export const selectShips = function (shiptype, placedShips) {
+  shiptype = parseInt(shiptype);
   const hoverShips = function (e) {
     const shipcoors = [];
     const shipcoor = e.target.getAttribute("data-coor");
     shipcoors.push(shipcoor.split("").map((x) => parseInt(x)));
     if (shiptype + shipcoors[0][1] > 10) {
-      console.log("error");
       return;
     }
     for (let i = 1; i < shiptype; i++) {
       shipcoors.push([parseInt(shipcoor[0]), parseInt(shipcoors[0][1]) + i]);
     }
-    if (placeTaken(placedShips, shipcoors))
-      shipcoors.forEach((ship) => {
-        const gridBox = document.querySelector(
-          `[data-coor='${ship.join("")}']`
-        );
-        gridBox.style.background = "grey";
-      });
+    const canBeplaced = placeTaken(placedShips, shipcoors);
+    console.log(canBeplaced);
+    if (placeTaken(placedShips, shipcoors)) {
+      return;
+    }
+    shipcoors.forEach((ship) => {
+      const gridBox = document.querySelector(`[data-coor='${ship.join("")}']`);
+      gridBox.style.background = "grey";
+    });
   };
   const gameBoard = document.querySelector(`#player`);
   gameBoard.addEventListener("mouseover", hoverShips);
@@ -74,7 +76,9 @@ export const selectShips = function (shiptype, placedShips) {
       }
       console.log(shipcoors);
       gameBoard.removeEventListener("mouseover", hoverShips);
-      return shipcoors;
+      placedShips.push(shipcoors);
+      removeSelection(shiptype);
+      displaySelectedAreas(placedShips);
     },
     { once: true }
   );
