@@ -34,3 +34,7 @@ html {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 }
+.draggableShip {
+  height: fit-content;
+  width: fit-content;
+}
