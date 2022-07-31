@@ -1,4 +1,4 @@
-import { removeSelection, displaySelectedAreas } from "./selectDom";
+import { removeSelection, displaySelectedAreas } from "./dom2";
 export const createBoard = function (boardName) {
   const gameBoard = document.querySelector(`#${boardName}`);
   for (let i = 0; i < 10; i++) {
@@ -85,7 +85,7 @@ export const selectShips = function (shiptype, placedShips) {
       for (let i = 1; i < shiptype; i++) {
         shipcoors.push([parseInt(shipcoor[0]), parseInt(shipcoors[0][1]) + i]);
       }
-      console.log(shipcoors);
+
       gameBoard.removeEventListener("mouseover", hoverShips);
       placedShips.push(shipcoors);
       removeSelection(shiptype);

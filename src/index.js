@@ -1,5 +1,6 @@
 import { createBoard, selectShips } from "./dom";
-import { displayBoard, startGame } from "./selectDom";
+import { displayBoard, startGame } from "./dom2";
+import { gameStart } from "./gameloop";
 const userShipSelction = (function () {
   createBoard("player");
   const playerShips = [];
@@ -10,8 +11,11 @@ const userShipSelction = (function () {
       gameBoard.addEventListener(
         "click",
         () => {
-          if (playerShips.length == 5) {
+          console.log(playerShips.length);
+          if (playerShips.length == 4) {
             startGame();
+
+            gameStart(playerShips);
           }
         },
         { once: true }

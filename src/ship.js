@@ -1,12 +1,11 @@
 export const newShip = function (coordinate) {
   const length = coordinate.length;
-
-  let totalHits = 0;
+  const totalHits = [];
   const hit = function () {
-    totalHits += 1;
+    totalHits.push(1);
   };
   const sunk = function () {
-    if (totalHits === length) return true;
+    if (totalHits.length === length) return true;
     else return false;
   };
 
@@ -14,6 +13,7 @@ export const newShip = function (coordinate) {
     hit,
     sunk,
     coordinate,
+    totalHits,
   };
 };
 export const makeShips = function (coordinates) {

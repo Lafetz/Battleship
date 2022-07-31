@@ -8,7 +8,7 @@ export const gameBoard = function (fleet) {
   const board = new Array(10).fill(0).map((x) => new Array(10).fill(0));
   const ships = [...fleet];
 
-  const placeShips = function () {
+  const placeShips = (function () {
     ships.forEach((ship) => {
       const shipCoordinates = [...ship.coordinate];
       shipCoordinates.forEach((c) => {
@@ -17,7 +17,7 @@ export const gameBoard = function (fleet) {
         board[x][y] = 1;
       });
     });
-  };
+  })();
 
   const receiveAttack = function (x, y) {
     if (board[x][y] == 2 || board[x][y] == 3) return "Error:area hit before";
@@ -33,19 +33,17 @@ export const gameBoard = function (fleet) {
     return ships.every((ship) => ship.sunk() == true);
   };
   return {
-    placeShips,
     receiveAttack,
     shipsSunk,
     board,
   };
 };
-//[[1,2],[1,7]]
+
 export const findShip = function (fleet, x, y) {
   let shipId;
   fleet.forEach((ship, i) => {
     ship.coordinate.forEach((c) => {
-      const sum = c[0] + c[1];
-      if (x + y == sum) {
+      if (c[0] == x && c[1] == y) {
         shipId = i;
       }
     });
