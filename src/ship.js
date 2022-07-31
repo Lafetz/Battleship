@@ -1,19 +1,26 @@
-export const newShip = function (length, coordinate) {
-  const coordinate = coordinate; //an array
-  const body = new Array(length).fill(0);
-  const hit = function (hitArea) {
-    body[hitArea] = 1;
+export const newShip = function (coordinate) {
+  const length = coordinate.length;
+
+  let totalHits = 0;
+  const hit = function () {
+    totalHits += 1;
   };
   const sunk = function () {
-    const totalHits = body.reduce((x, y) => x + y, 0);
-    if (totalHits === body.length) return true;
+    if (totalHits === length) return true;
     else return false;
   };
 
   return {
     hit,
     sunk,
-    body,
     coordinate,
   };
+};
+export const makeShips = function (coordinates) {
+  const fleet = [];
+  coordinates.forEach((c) => {
+    const ship = newShip(c);
+    fleet.push(ship);
+  });
+  return fleet;
 };

@@ -1,8 +1,7 @@
 import { createBoard, selectShips } from "./dom";
-
+import { displayBoard, startGame } from "./selectDom";
 const userShipSelction = (function () {
   createBoard("player");
-  let totalShipsPlaced = 0;
   const playerShips = [];
   const shipsToSelect = document.querySelectorAll(".ships");
   shipsToSelect.forEach((ship) => {
@@ -11,8 +10,9 @@ const userShipSelction = (function () {
       gameBoard.addEventListener(
         "click",
         () => {
-          totalShipsPlaced += 1;
-          console.log(totalShipsPlaced);
+          if (playerShips.length == 5) {
+            startGame();
+          }
         },
         { once: true }
       );
