@@ -1,5 +1,6 @@
 import { newShip, makeShips } from "./ship";
 import { gameBoard, findShip } from "./gameboard";
+import { aiHitCoordnates } from "./gameloop";
 
 describe("ship factory", () => {
   test("given coordinate make a new ship", () => {
@@ -99,4 +100,4 @@ describe("gameBoard", () => {
     expect(shipId3).toEqual(2);
   });
 });
-describe("dom functions", () => {});
+describe("gameloop", () => {});

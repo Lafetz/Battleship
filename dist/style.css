@@ -1,15 +1,22 @@
 body,
 html {
-  background-color: darkgray;
+  background-color: #3f3f46;
   height: 100%;
   box-sizing: border-box;
   padding: 0px;
   margin: 0px;
 }
+.title {
+  min-height: 150px;
+  background-color: #1e3a8a;
+  margin-bottom: 50px;
+  color: white;
+  font-family: sans-serif;
+}
 .container {
   height: 100%;
   display: grid;
-  grid-template-rows: 2fr 6fr 1fr;
+  grid-template-rows: 1fr 4fr;
 }
 .mainArea {
   margin: 0px 2.5%;
@@ -38,4 +45,16 @@ html {
 .draggableShip {
   height: fit-content;
   width: fit-content;
+}
+.background {
+  background-color: rgba(0, 0, 0, 0.56);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

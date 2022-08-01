@@ -6,12 +6,19 @@ export const createBoard = function (boardName) {
       const box = document.createElement("div");
       box.classList.add("gridBox");
       const coordinate = `${i}` + j;
-      box.setAttribute("data-coor", coordinate);
+
+      if (boardName == "ai") {
+        box.classList.add("gridBoxAi");
+        box.setAttribute("data-coori", coordinate);
+      }
+      if (boardName == "player") {
+        box.classList.add("gridBoxPlayer");
+        box.setAttribute("data-coor", coordinate);
+      }
       gameBoard.append(box);
     }
   }
 };
-//45 //46 //47 //48[[x],[y]]
 
 const placeTaken = function (placedShips, coors) {
   let taken = false;
@@ -33,11 +40,7 @@ const dontPaint = function (placedShips, coor) {
   });
   return taken;
 };
-// ship.forEach((x) => {
-//   if (x[0] + x[1] == ) {
-//   }
 
-//
 export const selectShips = function (shiptype, placedShips) {
   shiptype = parseInt(shiptype);
   const hoverShips = function (e) {
@@ -51,7 +54,7 @@ export const selectShips = function (shiptype, placedShips) {
       shipcoors.push([parseInt(shipcoor[0]), parseInt(shipcoors[0][1]) + i]);
     }
     const canBeplaced = placeTaken(placedShips, shipcoors);
-    console.log(canBeplaced);
+
     if (placeTaken(placedShips, shipcoors)) {
       return;
     }
@@ -63,19 +66,20 @@ export const selectShips = function (shiptype, placedShips) {
   const gameBoard = document.querySelector(`#player`);
   gameBoard.addEventListener("mouseover", hoverShips);
   const boxes = document.querySelectorAll(".gridBox");
-  boxes.forEach((box) => {
-    box.addEventListener("mouseleave", () => {
-      boxes.forEach((x) => {
-        // const taken = dontPaint(placedShips, x.getAttribute("data-coor"));
-        // console.log(taken);
-        x.style.background = "antiquewhite";
-        displaySelectedAreas(placedShips);
-      });
+  const leaveBox = function () {
+    boxes.forEach((x) => {
+      x.style.background = "antiquewhite";
+      displaySelectedAreas(placedShips);
     });
+  };
+  boxes.forEach((box) => {
+    box.addEventListener("mouseleave", leaveBox);
   });
+
   gameBoard.addEventListener(
     "click",
     (e) => {
+      gameBoard.removeEventListener("mouseover", hoverShips);
       const shipcoors = [];
       const shipcoor = e.target.getAttribute("data-coor");
       shipcoors.push(shipcoor.split("").map((x) => parseInt(x)));
@@ -85,11 +89,12 @@ export const selectShips = function (shiptype, placedShips) {
       for (let i = 1; i < shiptype; i++) {
         shipcoors.push([parseInt(shipcoor[0]), parseInt(shipcoors[0][1]) + i]);
       }
-
-      gameBoard.removeEventListener("mouseover", hoverShips);
       placedShips.push(shipcoors);
       removeSelection(shiptype);
       displaySelectedAreas(placedShips);
+      boxes.forEach((box) => {
+        box.removeEventListener("mouseleave", leaveBox);
+      });
     },
     { once: true }
   );
