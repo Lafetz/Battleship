@@ -12,6 +12,8 @@ html {
   min-height: 150px;
   background-color: #1e3a8a;
   margin-bottom: 50px;
+  box-shadow: 0 1px 4px rgb(84, 84, 84);
+  clip-path: polygon(0 0, 100% 0, 100% 200%, 0 200%);
 }
 h1 {
   color: white;
