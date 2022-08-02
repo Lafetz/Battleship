@@ -16,24 +16,28 @@ export const player = function () {
 };
 export const aiPlayerCoordinates = function () {
   const numbers = [];
-  const giveNo = function () {
-    let random = Math.floor(Math.random() * 10);
-    if (checkNo(random, numbers)) {
-      console.log(random);
-    }
+  while (numbers.length !== 5) {
+    const random = Math.floor(Math.random() * 10);
+    let loopCon = false;
+    numbers.forEach((x) => {
+      if (x == random) {
+        loopCon = true;
+        return;
+      }
+    });
+    if (loopCon) continue;
     numbers.push(random);
-    return random;
-  };
+  }
 
   const random5 = Math.floor(Math.random() * 6);
-  const ship5 = new Array(5).fill(0).map((x, i) => [1, random5 + i]);
+  const ship5 = new Array(5).fill(0).map((x, i) => [numbers[0], random5 + i]);
   const random4 = Math.floor(Math.random() * 7);
-  const ship4 = new Array(4).fill(0).map((x, i) => [3, random4 + i]);
+  const ship4 = new Array(4).fill(0).map((x, i) => [numbers[1], random4 + i]);
   const random3 = Math.floor(Math.random() * 8);
-  const ship3 = new Array(3).fill(0).map((x, i) => [4, random3 + i]);
-  const ship33 = new Array(3).fill(0).map((x, i) => [6, random3 + i]);
+  const ship3 = new Array(3).fill(0).map((x, i) => [numbers[2], random3 + i]);
+  const ship33 = new Array(3).fill(0).map((x, i) => [numbers[3], random3 + i]);
   const random2 = Math.floor(Math.random() * 9);
-  const ship2 = new Array(2).fill(0).map((x, i) => [9, random2 + i]);
+  const ship2 = new Array(2).fill(0).map((x, i) => [numbers[4], random2 + i]);
   console.log(ship2, ship3, ship33, ship4, ship5);
   return [ship2, ship3, ship33, ship4, ship5];
 };
