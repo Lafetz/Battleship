@@ -1,6 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;1,300;1,400&display=swap");
 body,
 html {
-  background-color: #3f3f46;
+  background-color: #334155;
   height: 100%;
   box-sizing: border-box;
   padding: 0px;
@@ -10,8 +12,28 @@ html {
   min-height: 150px;
   background-color: #1e3a8a;
   margin-bottom: 50px;
+}
+h1 {
   color: white;
-  font-family: sans-serif;
+  font-family: "Oswald", sans-serif;
+  font-size: 6rem;
+  width: fit-content;
+  margin: 0px auto;
+}
+p {
+  font-family: "roboto", sans-serif;
+  margin: 0px;
+  height: fit-content;
+  color: white;
+}
+h5 {
+  margin: 0px;
+  color: white;
+  font-family: "roboto", sans-serif;
+  font-size: 3.5rem;
+}
+.selection {
+  margin-bottom: 10px;
 }
 .container {
   height: 100%;
@@ -19,7 +41,7 @@ html {
   grid-template-rows: 1fr 4fr;
 }
 .mainArea {
-  margin: 0px 2.5%;
+  margin: 0px auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -30,14 +52,18 @@ html {
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 .gridBox {
-  background-color: antiquewhite;
+  background-color: #1d4ed8;
   border: 1px solid black;
   width: 50px;
   height: 50px;
 }
 .playerShips {
   display: grid;
+  margin-left: 100px;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+#ai {
+  margin-left: 100px;
 }
 .ships {
   display: flex;
@@ -57,4 +83,22 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+h3 {
+  font-family: "Oswald", sans-serif;
+  color: white;
+  font-size: 5rem;
+}
+.gridBoxP {
+  background-color: #047857;
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+}
+h4 {
+  margin: 0px;
+  width: 100%;
+  color: white;
+  font-family: "roboto", sans-serif;
+  font-size: 3.5rem;
 }
