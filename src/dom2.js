@@ -9,7 +9,7 @@ export const displaySelectedAreas = function (areas) {
     ship.forEach((coor) => {
       coor = coor.join("");
       const gridBox = document.querySelector(`[data-coor="${coor}"]`);
-      gridBox.style.background = "green";
+      gridBox.style.background = " #047857"; //green
     });
   });
 };
@@ -24,13 +24,13 @@ export const displayBoard = function (gameBoard) {
       const coordinate = [i, j].join("");
       const box = document.querySelector(`[data-coor="${coordinate}"]`);
       if (gameBoard.board[i][j] == 0) {
-        box.style.backgroundColor = "antiquewhite";
+        box.style.backgroundColor = "#1d4ed8"; ///miss
       } else if (gameBoard.board[i][j] == 1) {
-        box.style.background = "green";
+        box.style.background = "#047857";
       } else if (gameBoard.board[i][j] == 2) {
-        box.style.background = "blue";
+        box.style.background = "#71717a";
       } else {
-        box.style.background = "red";
+        box.style.background = "#dc2626"; //red
       }
     }
   }
@@ -42,11 +42,11 @@ export const displayBoardAi = function (gameBoard) {
       const coordinate = [i, j].join("");
       const box = document.querySelector(`[data-coori="${coordinate}"]`);
       if (gameBoard.board[i][j] == 3) {
-        box.style.backgroundColor = "red";
+        box.style.backgroundColor = "#dc2626"; //red
       } else if (gameBoard.board[i][j] == 2) {
-        box.style.background = "blue";
+        box.style.background = "#1d4ed8";
       } else {
-        box.style.backgroundColor = "antiquewhite";
+        box.style.backgroundColor = "#1e293b"; ///
       }
     }
   }

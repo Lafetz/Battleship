@@ -1,6 +1,7 @@
 import { removeSelection, displaySelectedAreas } from "./dom2";
 export const createBoard = function (boardName) {
   const gameBoard = document.querySelector(`#${boardName}`);
+
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       const box = document.createElement("div");
@@ -60,7 +61,7 @@ export const selectShips = function (shiptype, placedShips) {
     }
     shipcoors.forEach((ship) => {
       const gridBox = document.querySelector(`[data-coor='${ship.join("")}']`);
-      gridBox.style.background = "grey";
+      gridBox.style.background = "#64748b";
     });
   };
   const gameBoard = document.querySelector(`#player`);
@@ -68,7 +69,7 @@ export const selectShips = function (shiptype, placedShips) {
   const boxes = document.querySelectorAll(".gridBox");
   const leaveBox = function () {
     boxes.forEach((x) => {
-      x.style.background = "antiquewhite";
+      x.style.background = "#1d4ed8";
       displaySelectedAreas(placedShips);
     });
   };

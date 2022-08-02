@@ -49,11 +49,9 @@ const checkCoor = function (coordinate, gameBoard) {
 };
 const gamefinished = function (board1, board2) {
   if (board1.shipsSunk()) {
-    gameFinished(board1.name);
-    console.log(12);
+    gameFinished(board2.name);
   }
   if (board2.shipsSunk()) {
-    gameFinished(board2.name);
-    console.log(12);
+    gameFinished(board1.name);
   }
 };
